@@ -24,29 +24,33 @@
 
       <!-- Form to collect book information -->
       <div class="book-information">
-        <form>
+        <form action="" id="book-form">
           <h4>Add book to library</h4>
 
           <div>
             <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control" id="title" />
+            <input required type="text" class="form-control" id="title" />
           </div>
 
           <div>
             <label for="author" class="form-label">Author</label>
-            <input type="text" class="form-control" id="author" />
+            <input required type="text" class="form-control" id="author" />
           </div>
 
           <div>
-            <label for="number-of-pages" class="form-label"
-              >Number of pages</label
-            >
-            <input type="text" class="form-control" id="number-of-pages" />
+            <label for="pages" class="form-label">Number of pages</label>
+            <input
+              required
+              min="1"
+              type="number"
+              class="form-control"
+              id="pages"
+            />
           </div>
 
           <div>
-            <input type="checkbox" class="form-check-input" id="book-status" />
-            <label for="book-status" class="form-label"
+            <input type="checkbox" class="form-check-input" id="bookStatus" />
+            <label for="bookStatus" class="form-label"
               >Did you finish reading this book?</label
             >
           </div>

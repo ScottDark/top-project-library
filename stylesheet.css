@@ -21,3 +21,17 @@ body,
   grid-column: 1 / 3;
   place-self: center;
 }
+
+.book-information {
+  display: grid;
+  padding: 20px;
+}
+
+.book-information > form {
+  display: grid;
+}
+
+.book-information > form > button {
+  max-width: 100px;
+  max-height: 50px;
+}

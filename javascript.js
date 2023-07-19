@@ -1,4 +1,4 @@
-let myLibrary = [];
+loadEventListeners();
 
 /* Constructor for creating books.
    @para title, author, pages, read 
@@ -20,8 +20,33 @@ function Book(title, author, pages, read) {
   };
 }
 
-/* Add Book to myLibrary array. */
-function addBookToLibrary() {}
+/* Add Book object to Library array.
+  @para bookInfo form data from user
+  @return adds book to myLibrary Array */
+function addBookToLibrary(bookInfo) {
+  let myLibrary = [];
+
+  let title = bookInfo.title.value;
+  let author = bookInfo.author.value;
+  let pages = bookInfo.pages.value;
+  let read = bookInfo.bookStatus.checked;
+
+  const book = new Book(title, author, pages, read);
+
+  myLibrary.push(book);
+
+  return myLibrary;
+}
+
+/* Load event listeners. */
+function loadEventListeners() {
+  document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const getBookInfoFromUser = document.querySelector("#book-form");
+
+    addBookToLibrary(getBookInfoFromUser);
+  });
+}
 
 /* Test code */
 // const theHobbit = new Book("The Hobbit", "J.R.R", 295, false);
