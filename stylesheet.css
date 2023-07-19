@@ -32,6 +32,7 @@ body,
 
 .book-information > form {
   display: grid;
+  gap: 10px;
 }
 
 .book-information > form > button {
