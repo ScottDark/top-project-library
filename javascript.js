@@ -22,7 +22,7 @@ function Book(title, author, pages, read) {
 
 /* Add Book object to Library array.
   @para bookInfo form data from user
-  @return adds book to myLibrary Array */
+  @return myLibrary Array of books */
 function addBookToLibrary(bookInfo) {
   let myLibrary = [];
 
