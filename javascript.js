@@ -47,7 +47,8 @@ function displayBookOnPage(myLibrary) {
 
 /* Load event listeners. */
 function loadEventListeners() {
-  document.addEventListener("submit", (e) => {
+  let submitBookButton = document.querySelector(".submitBookButton");
+  submitBookButton.addEventListener("submit", (e) => {
     e.preventDefault();
     const getBookInfoFromUser = document.querySelector("#book-form");
 
