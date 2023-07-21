@@ -22,6 +22,8 @@ body,
   place-self: center;
 }
 
+/* Add book info */
+
 .book-information {
   display: grid;
   grid-column: 1 / 3;
@@ -39,3 +41,24 @@ body,
   max-width: 100px;
   max-height: 50px;
 }
+
+/* Add book info Ends */
+
+/* Book Layout */
+
+.book-layout-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 50px;
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  color: black;
+}
+
+/* Book Layout Ends*/

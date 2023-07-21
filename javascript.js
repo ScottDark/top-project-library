@@ -22,10 +22,9 @@ function Book(title, author, pages, read) {
 
 /* Add Book object to Library array.
   @para bookInfo form data from user
-  @return myLibrary Array of books */
+  @return myLibrary[] of books */
+const myLibrary = [];
 function addBookToLibrary(bookInfo) {
-  let myLibrary = [];
-
   let title = bookInfo.title.value;
   let author = bookInfo.author.value;
   let pages = bookInfo.pages.value;
@@ -35,7 +34,15 @@ function addBookToLibrary(bookInfo) {
 
   myLibrary.push(book);
 
-  return myLibrary;
+  displayBookOnPage(myLibrary);
+}
+
+/* Display each book on page from myLibrary array. 
+  @para myLibrary[] */
+function displayBookOnPage(myLibrary) {
+  myLibrary.forEach((element) => {
+    // console.log(element); test array
+  });
 }
 
 /* Load event listeners. */
