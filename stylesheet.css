@@ -37,7 +37,9 @@ body,
   gap: 10px;
 }
 
-.book-information > form > button {
+.book-information > form > button,
+.isBookRead,
+.removeBook {
   max-width: 100px;
   max-height: 50px;
 }

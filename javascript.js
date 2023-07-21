@@ -41,14 +41,13 @@ function addBookToLibrary(bookInfo) {
   @para myLibrary[] */
 function displayBookOnPage(myLibrary) {
   myLibrary.forEach((element) => {
-    // console.log(element); test array
+    // console.log(element);
   });
 }
 
 /* Load event listeners. */
 function loadEventListeners() {
-  let submitBookButton = document.querySelector(".submitBookButton");
-  submitBookButton.addEventListener("submit", (e) => {
+  document.addEventListener("submit", (e) => {
     e.preventDefault();
     const getBookInfoFromUser = document.querySelector("#book-form");
 
