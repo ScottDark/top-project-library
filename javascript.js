@@ -53,8 +53,8 @@ function displayBookOnPage(myLibrary) {
   const bookLayoutArea = document.querySelector(".book-layout-area");
   resetBookLayoutDisplay(bookLayoutArea);
 
-  myLibrary.forEach((book) => {
-    createBookDisplayCard(book);
+  myLibrary.forEach((book, index) => {
+    createBookDisplayCard(book, index);
   });
 }
 
@@ -65,12 +65,22 @@ function resetBookLayoutDisplay(bookLayoutArea) {
   }
 }
 
+/* Remove a book from the library[] */
+function removeBookFromLibrary(index) {
+  const selectRemoveBookButton = document.querySelector(
+    `[data-index-number=${index}]`
+  );
+
+  selectRemoveBookButton.addEventListener("click", (e) => {});
+}
+
 /* Build a card for book display */
-function createBookDisplayCard(book) {
+function createBookDisplayCard(book, index) {
   // Create Card wrapper
   const selectLibraryDisplay = document.querySelector(".book-layout-area");
   const card = document.createElement("div");
   card.classList.add("card");
+  card.setAttribute("data-book-number", index);
   selectLibraryDisplay.appendChild(card);
 
   // Body
@@ -113,6 +123,9 @@ function createBookDisplayCard(book) {
   cardButtonRemoveBook.setAttribute("type", "button");
   cardButtonReadStatus.setAttribute("id", "removeBook");
   const removeBookText = "Remove";
+  cardButtonRemoveBook.setAttribute("data-index-number", index);
   cardButtonRemoveBook.replaceChildren(removeBookText);
   selectCard.lastChild.appendChild(cardButtonRemoveBook);
+
+  removeBookFromLibrary(index);
 }
