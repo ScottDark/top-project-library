@@ -48,11 +48,11 @@ function addBookToLibrary(bookInfo) {
   displayBookOnPage(myLibrary);
 }
 
-/* Display each book on page from myLibrary array. 
-  @para myLibrary[] */
+/* Display each book on page from myLibrary array. */
 function displayBookOnPage(myLibrary) {
   const bookLayoutArea = document.querySelector(".book-layout-area");
   resetBookLayoutDisplay(bookLayoutArea);
+
   myLibrary.forEach((book) => {
     createBookDisplayCard();
   });
@@ -67,12 +67,49 @@ function resetBookLayoutDisplay(bookLayoutArea) {
 
 /* Build a card for book display */
 function createBookDisplayCard() {
+  // Create Card wrapper
   const selectLibraryDisplay = document.querySelector(".book-layout-area");
-  const createDiv = document.createElement("div");
-  createDiv.classList.add("card");
-  selectLibraryDisplay.appendChild(createDiv);
+  const card = document.createElement("div");
+  card.classList.add("card");
+  selectLibraryDisplay.appendChild(card);
 
-  // const selectCard = document.querySelector(".card");
-  // createDiv.classList.add("card-body");
-  // selectCard.appendChild(createDiv);
+  // Body
+  const selectCard = document.querySelector(".book-layout-area").lastChild;
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+  selectCard.appendChild(cardBody);
+
+  // Title
+  const cardTitle = document.createElement("h5");
+  cardTitle.classList.add("card-title");
+  selectCard.lastChild.appendChild(cardTitle);
+
+  // Sub-title
+  const cardSubTitle = document.createElement("h6");
+  cardSubTitle.classList.add("card-subtitle", "mb-2", "text-muted");
+  selectCard.lastChild.appendChild(cardSubTitle);
+
+  // <p>
+  const cardPara = document.createElement("p");
+  cardPara.classList.add("card-text");
+  selectCard.lastChild.appendChild(cardPara);
+
+  // button Read/Unread
+  const cardButtonReadStatus = document.createElement("button");
+  cardButtonReadStatus.classList.add("btn", "btn-primary");
+  cardButtonReadStatus.setAttribute("type", "button");
+  cardButtonReadStatus.setAttribute("id", "isBookRead");
+  const isRead = "Read";
+  const unRead = "Unread";
+  cardButtonReadStatus.replaceChildren(isRead);
+  selectCard.lastChild.appendChild(cardButtonReadStatus);
+
+  // button Remove book
+  const cardButtonRemoveBook = document.createElement("button");
+  cardButtonRemoveBook.classList.add("btn", "btn-danger");
+  cardButtonRemoveBook.setAttribute("type", "button");
+  cardButtonReadStatus.setAttribute("id", "removeBook");
+  const removeBookText = "Remove";
+  cardButtonRemoveBook.replaceChildren(removeBookText);
+  selectCard.lastChild.appendChild(cardButtonRemoveBook);
 }
