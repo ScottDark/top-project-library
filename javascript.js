@@ -54,7 +54,7 @@ function displayBookOnPage(myLibrary) {
   resetBookLayoutDisplay(bookLayoutArea);
 
   myLibrary.forEach((book) => {
-    createBookDisplayCard();
+    createBookDisplayCard(book);
   });
 }
 
@@ -66,7 +66,7 @@ function resetBookLayoutDisplay(bookLayoutArea) {
 }
 
 /* Build a card for book display */
-function createBookDisplayCard() {
+function createBookDisplayCard(book) {
   // Create Card wrapper
   const selectLibraryDisplay = document.querySelector(".book-layout-area");
   const card = document.createElement("div");
@@ -82,16 +82,19 @@ function createBookDisplayCard() {
   // Title
   const cardTitle = document.createElement("h5");
   cardTitle.classList.add("card-title");
+  cardTitle.replaceChildren(book.title);
   selectCard.lastChild.appendChild(cardTitle);
 
   // Sub-title
   const cardSubTitle = document.createElement("h6");
   cardSubTitle.classList.add("card-subtitle", "mb-2", "text-muted");
+  cardSubTitle.replaceChildren(book.author);
   selectCard.lastChild.appendChild(cardSubTitle);
 
   // <p>
   const cardPara = document.createElement("p");
   cardPara.classList.add("card-text");
+  cardPara.replaceChildren(book.pages + " pages");
   selectCard.lastChild.appendChild(cardPara);
 
   // button Read/Unread
