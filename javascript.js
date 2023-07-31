@@ -1,8 +1,21 @@
 loadEventListeners();
 
-/* Constructor for creating books.
-   @para title, author, pages, read 
-   @func info() returns Book information */
+/* Load event listeners. */
+function loadEventListeners() {
+  document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const getBookInfoFromUser = document.querySelector("#book-form");
+
+    addBookToLibrary(getBookInfoFromUser);
+  });
+}
+
+/* Test code */
+// const theHobbit = new Book("The Hobbit", "J.R.R", 295, false);
+
+// console.log(theHobbit.info());
+
+/* Constructor for creating books. */
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -20,9 +33,7 @@ function Book(title, author, pages, read) {
   };
 }
 
-/* Add Book object to Library array.
-  @para bookInfo form data from user
-  @return myLibrary[] of books */
+/* Add Book object to Library array. */
 const myLibrary = [];
 function addBookToLibrary(bookInfo) {
   let title = bookInfo.title.value;
@@ -40,22 +51,28 @@ function addBookToLibrary(bookInfo) {
 /* Display each book on page from myLibrary array. 
   @para myLibrary[] */
 function displayBookOnPage(myLibrary) {
-  myLibrary.forEach((element) => {
-    // console.log(element);
+  const bookLayoutArea = document.querySelector(".book-layout-area");
+  resetBookLayoutDisplay(bookLayoutArea);
+  myLibrary.forEach((book) => {
+    createBookDisplayCard();
   });
 }
 
-/* Load event listeners. */
-function loadEventListeners() {
-  document.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const getBookInfoFromUser = document.querySelector("#book-form");
-
-    addBookToLibrary(getBookInfoFromUser);
-  });
+/* Reset display area */
+function resetBookLayoutDisplay(bookLayoutArea) {
+  while (bookLayoutArea.firstChild) {
+    bookLayoutArea.removeChild(bookLayoutArea.firstChild);
+  }
 }
 
-/* Test code */
-// const theHobbit = new Book("The Hobbit", "J.R.R", 295, false);
+/* Build a card for book display */
+function createBookDisplayCard() {
+  const selectLibraryDisplay = document.querySelector(".book-layout-area");
+  const createDiv = document.createElement("div");
+  createDiv.classList.add("card");
+  selectLibraryDisplay.appendChild(createDiv);
 
-// console.log(theHobbit.info());
+  // const selectCard = document.querySelector(".card");
+  // createDiv.classList.add("card-body");
+  // selectCard.appendChild(createDiv);
+}

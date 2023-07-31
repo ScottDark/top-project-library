@@ -38,8 +38,8 @@ body,
 }
 
 .book-information > form > button,
-.isBookRead,
-.removeBook {
+#isBookRead,
+#removeBook {
   max-width: 100px;
   max-height: 50px;
 }
@@ -64,3 +64,9 @@ body,
 }
 
 /* Book Layout Ends*/
+
+/* Book Cards */
+
+#removeBook {
+  float: right;
+}
