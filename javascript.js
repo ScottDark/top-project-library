@@ -58,28 +58,6 @@ function displayBookOnPage(myLibrary) {
   });
 }
 
-/* Reset display area */
-function resetBookLayoutDisplay(bookLayoutArea) {
-  while (bookLayoutArea.firstChild) {
-    bookLayoutArea.removeChild(bookLayoutArea.firstChild);
-  }
-}
-
-/* Remove a book from the library[] and display */
-function removeBookFromLibrary(index) {
-  const selectRemoveBookButton = document.querySelector(
-    `[data-index-number="${index}"]`
-  );
-
-  selectRemoveBookButton.addEventListener("click", (e) => {
-    const removeElement = document.querySelector(
-      `[data-book-number="${index}"]`
-    );
-    removeElement.remove();
-    myLibrary.splice(index);
-  });
-}
-
 /* Build a card for book display */
 function createBookDisplayCard(book, index) {
   // Create Card wrapper
@@ -134,4 +112,38 @@ function createBookDisplayCard(book, index) {
   selectCard.lastChild.appendChild(cardButtonRemoveBook);
 
   removeBookFromLibrary(index);
+  setBookReadStatus(index);
+}
+
+/* Reset display area */
+function resetBookLayoutDisplay(bookLayoutArea) {
+  while (bookLayoutArea.firstChild) {
+    bookLayoutArea.removeChild(bookLayoutArea.firstChild);
+  }
+}
+
+/* Remove a book from the library[] and display */
+function removeBookFromLibrary(index) {
+  const selectRemoveBookButton = document.querySelector(
+    `[data-index-number="${index}"]`
+  );
+
+  selectRemoveBookButton.addEventListener("click", (e) => {
+    const removeElement = document.querySelector(
+      `[data-book-number="${index}"]`
+    );
+    removeElement.remove();
+    myLibrary.splice(index);
+  });
+}
+
+/* Change read status on book. */
+function setBookReadStatus(index) {
+  const selectReadStatusButton = document.querySelector(
+    `[data-index-number="${index}"]`
+  );
+
+  // selectReadStatusButton.addEventListener("click", (e) => {
+  //   selectReadStatusButton.replaceChildren("")
+  // })
 }
