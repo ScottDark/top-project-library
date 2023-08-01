@@ -65,13 +65,19 @@ function resetBookLayoutDisplay(bookLayoutArea) {
   }
 }
 
-/* Remove a book from the library[] */
+/* Remove a book from the library[] and display */
 function removeBookFromLibrary(index) {
   const selectRemoveBookButton = document.querySelector(
-    `[data-index-number=${index}]`
+    `[data-index-number="${index}"]`
   );
 
-  selectRemoveBookButton.addEventListener("click", (e) => {});
+  selectRemoveBookButton.addEventListener("click", (e) => {
+    const removeElement = document.querySelector(
+      `[data-book-number="${index}"]`
+    );
+    removeElement.remove();
+    myLibrary.splice(index);
+  });
 }
 
 /* Build a card for book display */
