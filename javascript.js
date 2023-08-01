@@ -93,12 +93,23 @@ function createBookDisplayCard(book, index) {
 
   // button Read/Unread
   const cardButtonReadStatus = document.createElement("button");
-  cardButtonReadStatus.classList.add("btn", "btn-primary");
+  cardButtonReadStatus.classList.add("btn");
   cardButtonReadStatus.setAttribute("type", "button");
   cardButtonReadStatus.setAttribute("id", "isBookRead");
+  cardButtonReadStatus.setAttribute("data-index-read-status", index);
+
+  // Determine if book is initially read or not and set status on button.
   const isRead = "Read";
   const unRead = "Unread";
-  cardButtonReadStatus.replaceChildren(isRead);
+
+  if (book.read === true) {
+    cardButtonReadStatus.replaceChildren(isRead);
+    cardButtonReadStatus.classList.add("btn-success");
+  } else {
+    cardButtonReadStatus.replaceChildren(unRead);
+    cardButtonReadStatus.classList.add("btn-secondary");
+  }
+
   selectCard.lastChild.appendChild(cardButtonReadStatus);
 
   // button Remove book
@@ -112,7 +123,7 @@ function createBookDisplayCard(book, index) {
   selectCard.lastChild.appendChild(cardButtonRemoveBook);
 
   removeBookFromLibrary(index);
-  setBookReadStatus(index);
+  setBookReadStatus(book, index, isRead, unRead, cardButtonReadStatus);
 }
 
 /* Reset display area */
@@ -138,12 +149,24 @@ function removeBookFromLibrary(index) {
 }
 
 /* Change read status on book. */
-function setBookReadStatus(index) {
+function setBookReadStatus(book, index, isRead, unRead, cardButtonReadStatus) {
   const selectReadStatusButton = document.querySelector(
-    `[data-index-number="${index}"]`
+    `[data-index-read-status="${index}"]`
   );
 
-  // selectReadStatusButton.addEventListener("click", (e) => {
-  //   selectReadStatusButton.replaceChildren("")
-  // })
+  selectReadStatusButton.addEventListener("click", (e) => {
+    if (book.read === true) {
+      cardButtonReadStatus.replaceChildren(unRead);
+      cardButtonReadStatus.classList.remove("btn-success");
+      cardButtonReadStatus.classList.add("btn-secondary");
+      book.read = false;
+      console.log("This book is " + book.read);
+    } else {
+      cardButtonReadStatus.replaceChildren(isRead);
+      cardButtonReadStatus.classList.remove("btn-secondary");
+      cardButtonReadStatus.classList.add("btn-success");
+      book.read = true;
+      console.log("This book is " + book.read);
+    }
+  });
 }
